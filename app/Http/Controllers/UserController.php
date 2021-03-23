@@ -16,7 +16,7 @@ class UserController extends Controller
 
         $user = User::where('email', $email)->first();
         if ($user && Hash::check($password, $user->password)) {
-            $user->token = Hash::make($user->email . date());
+            $user->token = Hash::make($user->email . date('Y/m/d'));
             $user->save();
             
             return response()->json(['data' => $user]);

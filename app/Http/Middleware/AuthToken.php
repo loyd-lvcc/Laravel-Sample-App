@@ -18,11 +18,14 @@ class AuthToken
      */
     public function handle(Request $request, Closure $next)
     {
-        $token = $request->get('token');
-        $user = User::where('token', $token)->first();
+        $bearerToken = $request->bearerToken() ?? $request->get('token');
+        if (!$bearerToken) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        $user = User::where('token', $bearerToken)->first();
         if (!$user) {
-            // return response()->json(['error' => 'Not allowed']);
-            abort(401, 'Unauthorized');
+            return response()->json(['error' => 'Not allowed']);
         }
 
         return $next($request);
