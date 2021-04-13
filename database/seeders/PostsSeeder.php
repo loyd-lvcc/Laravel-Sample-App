@@ -36,6 +36,14 @@ class PostsSeeder extends Seeder
                 'user_id' => 1,
                 'post' => 'Post 5'
             ],
+            [
+                'user_id' => 2,
+                'post' => 'Post 6'
+            ],
+            [
+                'user_id' => 2,
+                'post' => 'Post 7'
+            ],
         ];
 
 

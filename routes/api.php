@@ -20,10 +20,10 @@ Route::post('login', [UserController::class, 'login']);
 Route::post('signup', [UserController::class, 'signup']);
 
 Route::group(['middleware' => ['authToken']], function() {
-    Route::get('posts', [PostController::class, 'index']);
-    Route::post('posts', [PostController::class, 'create']);
-    Route::put('posts', [PostController::class, 'update']);
-    Route::delete('posts', [PostController::class, 'delete']);
+    Route::get('/users/{user}/posts', [PostController::class, 'posts']);
+    Route::post('/users/{user}/posts', [PostController::class, 'store']); // create post
+    Route::put('/users/{user}/posts/{post}', [PostController::class, 'update']); // update
+    Route::delete('/users/{user}/posts/{post}', [PostController::class, 'destroy']); // delete
 });
 
 

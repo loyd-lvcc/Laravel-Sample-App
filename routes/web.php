@@ -15,9 +15,25 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
 
 Route::get('/test', [PostController::class, 'test']);
+
+
+// Route::get('/products');
+// Route::get('/products/{id}');
+// Route::post('/products');
+// Route::put('/products/{id}');
+// Route::delete('/products/{id}');
+
+// // list of post of a user
+Route::get('/users/{user}/posts', [PostController::class, 'posts']);
+Route::post('/users/{user}/posts', [PostController::class, 'store']); // create post
+Route::put('/users/{user}/posts/{post}', [PostController::class, 'update']); // update
+Route::delete('/users/{user}/posts/{post}', [PostController::class, 'destroy']); // delete
+
+// Route::get('/posts'); // any user
+

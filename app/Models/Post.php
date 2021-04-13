@@ -9,6 +9,8 @@ Use App\Models\User;
 
 class Post extends Model
 {
+    protected $fillable = ['user_id', 'post'];
+
     use HasFactory;
 
     public function user() {
